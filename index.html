@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Me.jpg">
+    <title>Yashwant Patil Portfolio</title>
+
+    <!-- Font Awesome icons -->
+    <script src="https://kit.fontawesome.com/a9cdbedf57.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" id="themeStylesheet" href="./assets/css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #00d2ff, #3a47d5);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .fade-in:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .fade-in:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .fade-in:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        header,
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 40px 20px;
+        }
+
+        .hero-section__title span,
+        .projects-section h2 span,
+        .contact-section h2 span,
+        .about-section h2 span,
+        .skills-section h2 span {
+            color: #ffdf00;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #ffdf00;
+            color: #000;
+        }
+
+        .btn-dark-outlined {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #ddd;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .projects-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .project-info h3 {
+            margin: 0;
+            color: #ffdf00;
+            font-size: 22px;
+        }
+
+        .project-info p {
+            margin: 10px 0;
+            color: #eee;
+        }
+
+        .project-info a {
+            display: inline-block;
+            color: #00d2ff;
+            text-decoration: none;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .project-info a:hover {
+            color: #ffdf00;
+        }
+
+        .rdr2-img {
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .rdr2-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-content {
+            flex: 1 1 50%;
+        }
+
+        .hero-img {
+            flex: 1 1 40%;
+        }
+
+        .about-img img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00ff00;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+        }
+
+        .about-img img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Skills Section */
+        .skills-section {
+    padding: 40px 20px;
+    background-color: #152715; /* Solid green background */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+
+
+        .skills-section h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .skill {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            height: 20px;
+        }
+
+        .skill-level {
+            height: 100%;
+            display: block;
+            border-radius: 20px;
+            transition: width 0.6s ease, background-color 0.3s ease;
+        }
+
+        .skill-level:hover {
+            filter: brightness(1.2);
+        }
+
+        .green {
+            background-color: #00ff00;
+        }
+
+        .yellow {
+            background-color: #ffdf00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <a href="./index.html"><span class="logo">Coding Aspirant!!</span></a>
+        </div>
+        <div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section" id="home">
+            <div>
+                <div>
+                    <h4 class="fade-in" title="Hello, How are you?">Hi, There!</h4>
+                    <h2 class="hero-section__title fade-in">I'm <span>Yashwant Patil</span></h2>
+                    <p class="hero-section__desc fade-in">I am currently pursuing my first year of my B.Tech degree (IT branch) at MITAOE, Alandi.</p>
+                </div>
+                <ul class="social-icons fade-in">
+                    <li><a href="https://www.linkedin.com/in/yashwant-patil-7b9654350/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                    <li><a href="https://www.instagram.com/wreck_it_yash/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://x.com/Yashwant_21131" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+                </ul>
+                <div class="hero-buttons fade-in">
+                    <button class="btn btn-primary"><a href="./index.html">Portfolio</a></button>
+                    <button class="btn btn-dark-outlined">
+                        <a href="https://cyan-stormy-79.tiiny.site" target="_blank">Download CV</a>
+                    </button>
+                </div>
+            </div>
+            <div class="about-img fade-in">
+                <img src="Me2.png" alt="Yashwant-portfolio">
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="about-content">
+                <h4 class="fade-in">About Me</h4>
+                <h2 class="fade-in">I am a student & <br><span>Career Aspirant</span></h2>
+                <p class="fade-in">Hey there! I'm Yashwant Patil, a first year IT student at MITAOE, Alandi. My journey in tech has fueled my passion for Gaming, Web Development, and coding where I love blending innovation with real-world problem-solving. In this fast-paced digital world, I've worked on a python project in my 12th std, which you can explore right here in my portfolio.</p>
+                <div class="fade-in" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                    <a class="btn btn-primary" href="https://github.com/settings/profile" target="_blank">GitHub <i class="fa-brands fa-github"></i></a>
+                    <a class="btn btn-primary" href="https://www.codechef.com/users/eren121" target="_blank">CodeChef <i class="fa-solid fa-code"></i></a>
+                    <a class="btn btn-primary" href="https://leetcode.com/u/Yashwant51304/" target="_blank">LeetCode <i class="fa-solid fa-laptop-code"></i></a>
+                </div>
+            </div>
+            <div class="hero-img fade-in">
+                <img src="RDR2.jpg" alt="Yashwant-portfolio" class="rdr2-img">
+            </div>
+        </section>
+
+        <section class="skills-section" id="skills">
+            <h2>My <span>Skills</span></h2>
+            <div class="skill fade-in">
+                <div class="skill-name">HTML</div>
+                <div class="skill-bar">
+                    <span class="skill-level green" style="width: 60%;"></span>
+                </div>
+            </div>
+            <div class="skill fade-in">
+                <div class="skill-name">CSS</div>
+                <div class="skill-bar">
+                    <span class="skill-level yellow" style="width: 65%;"></span>
+                </div>
+            </div>
+            <div class="skill fade-in">
+                <div class="skill-name">Java</div>
+                <div class="skill-bar">
+                    <span class="skill-level green" style="width: 50%;"></span>
+                </div>
+            </div>
+            <div class="skill fade-in">
+                <div class="skill-name">Python</div>
+                <div class="skill-bar">
+                    <span class="skill-level yellow" style="width: 70%;"></span>
+                </div>
+            </div>
+            <div class="skill fade-in">
+                <div class="skill-name">C Programming</div>
+                <div class="skill-bar">
+                    <span class="skill-level green" style="width: 80%;"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <h2>My <span>Projects</span></h2>
+            <div class="project-card">
+                <img src="graph.jpeg" alt="Project Screenshot">
+                <div class="project-info">
+                    <h3><u>Python Project:</u> Plotting Various types of graphs and editing a csv file in Python.</h3>
+                    <p>A python project that reads csv file, can edit that file, and plot graph using that data.</p>
+                    <a href="https://github.com/Yashwant190/Python-Project-Class-12th-/tree/main" target="_blank">
+                        View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <h2>Contact <span>Me!</span></h2>
+            <form action="">
+                <div>
+                    <input type="text" name="name" placeholder="Full Name" required>
+                </div>
+                <div>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div>
+                    <textarea name="message" placeholder="Type Message" rows="5"></textarea>
+                </div>
+                <div>
+                    <button class="btn btn-primary">SEND MESSAGE</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2025 - <a href="https://github.com/settings/profile"
+                target="_blank">Yashwant Patil</a> - All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>
